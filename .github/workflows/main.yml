@@ -9,7 +9,7 @@ on:
       - main
         
 jobs:
-  StockTracker build and deploy:
+  stocktracker-build-and-deploy:
     runs-on: ubuntu-latest
     
     steps:
@@ -32,7 +32,7 @@ jobs:
       - name: Publish project
         run: dotnet publish ./src/StockTracker/**/*.csproj --configuration Release --output ./publish/StockTracker
   
-  TradeStream build and deploy:
+  tradestream-build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -55,7 +55,7 @@ jobs:
       - name: Publish project
         run: dotnet publish ./src/TradeStream/**/*.csproj --configuration Release --output ./publish/TradeStream
   
-  Webhook build and deploy:
+  webhook-build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
