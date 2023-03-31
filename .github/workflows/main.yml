@@ -20,11 +20,8 @@ jobs:
         with:
           dotnet-version: 7.0.x
 
-      - name: Restore dependencies
-        run: dotnet restore ./src/StockTracker/**/**/*.csproj
-
       - name: Build project
-        run: dotnet build ./src/StockTracker/**/*.csproj --configuration Release
+        run: dotnet build ./src/StockTracker/**/**/*.csproj --configuration Release
 
       - name: Test project
         run: dotnet test ./src/StockTracker/**/*.csproj --configuration Release
