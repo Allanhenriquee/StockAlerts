@@ -21,7 +21,7 @@ jobs:
           dotnet-version: 7.0.x
 
       - name: Restore dependencies
-        run: dotnet restore ./src/StockTracker/**/*.csproj
+        run: dotnet restore ./src/StockTracker/**/**/*.csproj
 
       - name: Build project
         run: dotnet build ./src/StockTracker/**/*.csproj --configuration Release
@@ -44,7 +44,7 @@ jobs:
           dotnet-version: 7.0.x
 
       - name: Restore dependencies
-        run: dotnet restore ./src/TradeStream/**/*.csproj
+        run: dotnet restore ./src/TradeStream/**/**/*.csproj
 
       - name: Build project
         run: dotnet build ./src/TradeStream/**/*.csproj --configuration Release
@@ -67,16 +67,16 @@ jobs:
           dotnet-version: 7.0.x
 
       - name: Restore dependencies
-        run: dotnet restore ./src/Webhook/WebhookSendAlerts.Console/**/*.csproj
+        run: dotnet restore ./src/Webhook/WebhookSendAlerts.Console/WebhookSendAlerts.Console.csproj
 
       - name: Build project
-        run: dotnet build ./src/Webhook/WebhookSendAlerts.Console/**/*.csproj --configuration Release
+        run: dotnet build ./src/Webhook/WebhookSendAlerts.Console/WebhookSendAlerts.Console.csproj --configuration Release
 
       - name: Test project
-        run: dotnet test ./src/Webhook/WebhookSendAlerts.Console/**/*.csproj --configuration Release
+        run: dotnet test ./src/Webhook/WebhookSendAlerts.Console/WebhookSendAlerts.Console.csproj --configuration Release
 
       - name: Publish project
-        run: dotnet publish ./src/Webhook/WebhookSendAlerts.Console/**/*.csproj --configuration Release --output ./publish/Webhook
+        run: dotnet publish ./src/Webhook/WebhookSendAlerts.Console/WebhookSendAlerts.Console.csproj --configuration Release --output ./publish/Webhook
     
         
 
