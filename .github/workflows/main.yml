@@ -44,16 +44,16 @@ jobs:
           dotnet-version: 7.0.x
 
       - name: Restore dependencies
-        run: dotnet restore ./src/TradeStream/**/**/*.csproj
+        run: dotnet restore ./src/TradeStream/TradeStream.API/TradeStream.API.csproj
 
       - name: Build project
-        run: dotnet build ./src/TradeStream/**/*.csproj --configuration Release
+        run: dotnet build ./src/TradeStream/TradeStream.API/TradeStream.API.csproj --configuration Release
 
       - name: Test project
         run: dotnet test ./src/TradeStream/TradeStream.Tests/TradeStream.Tests.csproj --configuration Release
 
       - name: Publish project
-        run: dotnet publish ./src/TradeStream/**/*.csproj --configuration Release --output ./publish/TradeStream
+        run: dotnet publish ./src/TradeStream/TradeStream.API/TradeStream.API.csproj --configuration Release --output ./publish/TradeStream
   
   webhook-build-and-deploy:
     runs-on: ubuntu-latest
