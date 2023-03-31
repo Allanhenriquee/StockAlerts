@@ -21,7 +21,7 @@ jobs:
           dotnet-version: 7.0.x
 
       - name: Restore dependencies
-        run: dotnet restore ./src/StockTracker --recursive
+        run: dotnet restore ./src/StockTracker/**/**/*.csproj
 
       - name: Build project
         run: dotnet build ./src/StockTracker/**/*.csproj --configuration Release
