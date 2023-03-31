@@ -53,13 +53,16 @@ jobs:
         run: dotnet publish ./src/TradeStream/**/*.csproj --configuration Release --output ./publish/TradeStream
         
   Webhook build and deploy:
-    - uses: actions/checkout@main
+    - runs-on: ubuntu-latest
 
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 7.0.x
-        
+      steps:
+        - uses: actions/checkout@main
+
+        - name: Setup .NET Core
+          uses: actions/setup-dotnet@v3
+          with:
+            dotnet-version: 7.0.x
+            
     - name: Restore dependencies
       run: dotnet restore ./src/Webhook/WebhookSendAlerts.Console/*.csproj
       
