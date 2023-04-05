@@ -1,4 +1,4 @@
-name: Build and Deploy Stock Alerts
+name: Build and Deploy Stock Alerts - Development
 
 on:
   push:
