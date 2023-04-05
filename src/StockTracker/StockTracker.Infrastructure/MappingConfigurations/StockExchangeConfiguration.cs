@@ -8,6 +8,8 @@ public class StockExchangeConfiguration : IEntityTypeConfiguration<StockExchange
 {
     public void Configure(EntityTypeBuilder<StockExchange> builder)
     {
+        builder.ToTable("StockExchanges");
+        
         builder.HasKey(s => s.Id);
     }
 }
