@@ -4,7 +4,7 @@ namespace StockTracker.Domain.Models.Entities;
 
 public class Stock : Entity
 {
-    public string ExchangeSymbol { get; set; }
+    public string StockSymbol { get; set; }
     public string CompanyName { get; set; }
     public string BusinessSector { get; set; }
     public string CountryOfOrigin { get; set; }
