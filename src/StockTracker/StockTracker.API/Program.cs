@@ -13,6 +13,7 @@ builder.Services.AddDbContext<StockTrackerContext>(options =>
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 
 builder.Services.AddMediatR(typeof(CreateStockCommand));
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddControllers();
 
