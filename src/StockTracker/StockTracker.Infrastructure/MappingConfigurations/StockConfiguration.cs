@@ -17,7 +17,7 @@ public class StockConfiguration : IEntityTypeConfiguration<Stock>
         builder.Property(s => s.CompanyName).HasColumnType("VARCHAR(200)").HasColumnOrder(3).IsRequired();
         builder.Property(s => s.BusinessSector).HasColumnType("VARCHAR(100)").HasColumnOrder(4).IsRequired();
         builder.Property(s => s.CountryOfOrigin).HasColumnType("VARCHAR(200)").HasColumnOrder(5).IsRequired();
-        builder.Property(s => s.Price).HasColumnOrder(6).IsRequired();
+        builder.Property(s => s.Price).HasColumnOrder(6).HasPrecision(18,2).IsRequired();
         builder.Property(s => s.Active).HasColumnOrder(7);
         builder.Property(s => s.CreatedAt).HasColumnOrder(8);
         builder.Property(s => s.UpdateAt).HasColumnOrder(9);
