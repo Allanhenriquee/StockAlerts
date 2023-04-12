@@ -1,17 +1,18 @@
 ﻿using AutoMapper;
 using MediatR;
+using StockTracker.Application.Dtos.StockCommand;
 using StockTracker.Domain.Commands;
 using StockTracker.Domain.Models.Entities;
 using StockTracker.Domain.Repositories.Interfaces;
 
 namespace StockTracker.Application.Commands.StocksCommands.Handlers;
 
-public class CreateStockHandler : IRequestHandler<CreateStockCommand, GenericCommandResult>
+public class CreateStockCommandHandler : IRequestHandler<CreateStockCommand, GenericCommandResult>
 {
     private readonly IStockRepository _stockRepository;
     private readonly IMapper _mapper;
 
-    public CreateStockHandler(IStockRepository stockRepository, IMapper mapper)
+    public CreateStockCommandHandler(IStockRepository stockRepository, IMapper mapper)
     {
         _stockRepository = stockRepository;
         _mapper = mapper;
@@ -30,8 +31,10 @@ public class CreateStockHandler : IRequestHandler<CreateStockCommand, GenericCom
         
         await _stockRepository.CreateStock(stock);
         
+        var stockCommandResult = _mapper.Map<CreateStockCommandResult>(stock);
+        
         return new GenericCommandResult(true,
-            $"Ação {request.StockSymbol} da Empresa {request.CompanyName} cadastrada com sucesso!",
-            stock);
+            $"Ação {stockCommandResult.StockSymbol} - Empresa {stockCommandResult.CompanyName} - Cadastrado com sucesso! :) ",
+            stockCommandResult);
     }
 }

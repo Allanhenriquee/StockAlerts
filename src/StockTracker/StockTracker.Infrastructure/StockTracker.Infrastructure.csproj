@@ -19,6 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\StockTracker.Application\StockTracker.Application.csproj" />
       <ProjectReference Include="..\StockTracker.Domain\StockTracker.Domain.csproj" />
     </ItemGroup>
 
