@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using StockTracker.Application.Commands.StocksCommands;
-using StockTracker.Domain.Repositories.Interfaces;
+using StockTracker.Application.Queries.StocksQueries;
 
 
 namespace StockTracker.API.Controllers;
@@ -10,20 +10,27 @@ namespace StockTracker.API.Controllers;
 [Route("api/v1/stocks")]
 public class StockController : ControllerBase
 {
-    private readonly IStockRepository _stockRepository;
     private readonly IMediator _mediator;
-    public StockController(IStockRepository stockRepository, IMediator mediator)
+    public StockController(IMediator mediator)
     {
-        _stockRepository = stockRepository;
         _mediator = mediator;
     }
 
     [HttpPost("create-stock")]
     public async Task<IActionResult> CreateStock(CreateStockCommand model)
     {
-        var result = await _mediator.Send(model);
-
-        return Ok(result);
+        return Ok(await _mediator.Send(model));
+    }
+    
+    [HttpGet("get-all-stocks")]
+    public async Task<IActionResult> GetAllStocks()
+    {
+        return Ok(await _mediator.Send(new GetAllStocksQuery()));
+    }
+    [HttpGet("get-all-stocks-inactive")]
+    public async Task<IActionResult> GetAllStocksInactive()
+    {
+        return Ok(await _mediator.Send(new GetAllStocksInactiveQuery()));
     }
 
     [HttpPost("create-stock-with-stock-exchange")]

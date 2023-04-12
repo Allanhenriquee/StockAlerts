@@ -31,7 +31,22 @@ public class CreateStockCommand : Notifiable, IRequest<GenericCommandResult>, IC
     {
         AddNotifications(new Contract()
             .Requires()
-            .HasMaxLen(StockSymbol, 10, "StockSymbol", "Stock Symbol deve ter menos de 10 caracteres")
+            .IsNotNullOrEmpty(StockSymbol, "StockSymbol", "Stock Symbol não pode ser vazio")
+            .HasMinLen(StockSymbol, 3, "StockSymbol", "Stock Symbol deve ter entre 3 e 10 caracteres")
+            .HasMaxLen(StockSymbol, 10, "StockSymbol", "Stock Symbol deve ter entre 3 e 10 caracteres")
+            
+            .IsNotNullOrEmpty(CompanyName, "CompanyName", "Company Name não pode ser vazio")
+            .HasMinLen(CompanyName, 3, "CompanyName", "Company Name deve ter entre 3 e 200 caracteres")
+            .HasMaxLen(CompanyName, 200, "CompanyName", "Company Name deve ter entre 3 e 200 caracteres")
+            
+            .IsNullOrEmpty(BusinessSector, "BusinessSector", "Business Sector não pode ser vazio")
+            .HasMinLen(BusinessSector, 3, "BusinessSector", "Business Sector deve ter entre 3 e 100 caracteres")
+            .HasMaxLen(BusinessSector, 100, "BusinessSector", "Business Sector deve ter entre 3 e 100 caracteres")
+            
+            .IsNotNullOrEmpty(CountryOfOrigin, "CountryOfOrigin", "Country Of Origin não pode ser vazio")
+            .HasMinLen(CountryOfOrigin, 3, "CountryOfOrigin", "Country Of Origin deve ter entre 3 e 200 caracteres")
+            .HasMaxLen(CountryOfOrigin, 200, "CountryOfOrigin", "Country Of Origin deve ter entre 3 e 200 caracteres")
+            
             .IsGreaterThan(Price, 0, "Price", "Price deve ser maior que zero")
         );
     }
