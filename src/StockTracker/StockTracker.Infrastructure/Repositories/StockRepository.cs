@@ -51,4 +51,27 @@ public class StockRepository : IStockRepository
 
         return stocks;
     }
+
+    public async Task<Stock> GetStockById(string id)
+    {
+        var stock = await _context.Stocks.SingleOrDefaultAsync(s => s.Id == id);
+        return stock;
+    }
+
+    public async Task<Stock> GetStockByStockSymbol(string stockSymbol)
+    {
+        var stock = await _context.Stocks.SingleOrDefaultAsync(s => s.StockSymbol == stockSymbol);
+        return stock;
+    }
+
+    public async Task UpdateStock(Stock stock)
+    {
+        _context.Stocks.Update(stock);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task DeleteStock(Stock stock)
+    {
+        throw new NotImplementedException();
+    }
 }

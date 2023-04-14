@@ -39,7 +39,7 @@ public class CreateStockCommand : Notifiable, IRequest<GenericCommandResult>, IC
             .HasMinLen(CompanyName, 3, "CompanyName", "Company Name deve ter entre 3 e 200 caracteres")
             .HasMaxLen(CompanyName, 200, "CompanyName", "Company Name deve ter entre 3 e 200 caracteres")
             
-            .IsNullOrEmpty(BusinessSector, "BusinessSector", "Business Sector não pode ser vazio")
+            .IsNotNullOrEmpty(BusinessSector, "BusinessSector", "Business Sector não pode ser vazio")
             .HasMinLen(BusinessSector, 3, "BusinessSector", "Business Sector deve ter entre 3 e 100 caracteres")
             .HasMaxLen(BusinessSector, 100, "BusinessSector", "Business Sector deve ter entre 3 e 100 caracteres")
             

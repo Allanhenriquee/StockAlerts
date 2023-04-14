@@ -8,4 +8,8 @@ public interface IStockRepository
     Task CreateStock(Stock stock);
     Task<List<GetAllStocksQueryDto>> GetAllStock();
     Task<List<GetAllStocksQueryDto>> GetAllStockInactive();
+    Task<Stock?> GetStockById(string id);
+    Task<Stock>  GetStockByStockSymbol(string stockSymbol);
+    Task UpdateStock(Stock stock);
+    Task DeleteStock(Stock stock);
 }

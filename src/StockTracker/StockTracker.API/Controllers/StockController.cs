@@ -17,9 +17,23 @@ public class StockController : ControllerBase
     }
 
     [HttpPost("create-stock")]
-    public async Task<IActionResult> CreateStock(CreateStockCommand model)
+    public async Task<IActionResult> CreateStock(CreateStockCommand command)
     {
-        return Ok(await _mediator.Send(model));
+        return Ok(await _mediator.Send(command));
+    }
+    
+    [HttpPut("update-stock-by-id/{Id}")]
+    public async Task<IActionResult> UpdateStockById(string id, UpdateStockByIdCommand command)
+    {
+        command.Id = id;
+        return Ok(await _mediator.Send(command));
+    }
+    
+    [HttpPut("update-stock-by-stock-symbol/{StockSymbol}")]
+    public async Task<IActionResult> UpdateStockByStockSymbol(string stockSymbol, UpdateStockByStockSymbolCommand command)
+    {
+        command.StockSymbol = stockSymbol;
+        return Ok(await _mediator.Send(command));
     }
     
     [HttpGet("get-all-stocks")]

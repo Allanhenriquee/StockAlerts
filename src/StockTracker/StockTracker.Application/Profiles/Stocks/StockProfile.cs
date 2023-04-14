@@ -12,5 +12,7 @@ public class StockProfile : Profile
         CreateMap<CreateStockCommand, Stock>();
         
         CreateMap<Stock, CreateStockCommandResult>();
+
+        CreateMap<Stock, UpdateStockCommandResult>();
     }
 }
